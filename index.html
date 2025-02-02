@@ -1,0 +1,147 @@
+!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buka Peti Harta Karun</title>
+    <style>
+        /* Gaya umum */
+        body { 
+            font-family: 'Arial', sans-serif; 
+            text-align: center; 
+            background: linear-gradient(to bottom, #2c3e50, #34495e); 
+            color: white; 
+            padding: 20px;
+        }
+        h2 { margin-bottom: 10px; }
+        p { font-size: 1.1em; }
+        
+        /* Input dan tombol */
+        input {
+            width: 80%;
+            max-width: 200px;
+            padding: 10px;
+            font-size: 1.2em;
+            text-align: center;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+        }
+        button {
+            background-color: #f39c12;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+        button:hover {
+            background-color: #e67e22;
+        }
+
+        /* Pesan */
+        #message {
+            margin-top: 15px; 
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        /* Kontainer konten */
+        .content {
+            display: none;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        /* Animasi fade-in */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Gaya gambar */
+        img {
+            width: 100%;
+            max-width: 300px;
+            margin-top: 10px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease-in-out;
+        }
+        img:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Responsif */
+        @media (max-width: 600px) {
+            h2 { font-size: 1.5em; }
+            p { font-size: 1em; }
+            input, button { font-size: 1em; }
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Buka Peti Harta Karun</h2>
+    <p>Masukkan kode 4 digit:</p>
+    <input type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" id="kode" maxlength="4">
+    <button onclick="cekKode()">Buka</button>
+    <p id="message"></p>
+
+    <!-- Konten dengan gambar -->
+    <div id="halaman1" class="content">
+        <h3>Peti Emas</h3>
+        <p>Selamat! Anda menemukan peti berisi emas dan permata.</p>
+        <img src="https://via.placeholder.com/300x200/FFD700/000000?text=Peti+Emas" alt="Peti Emas">
+    </div>
+
+    <div id="halaman2" class="content">
+        <h3>Peti Misterius</h3>
+        <p>Anda menemukan peti tua dengan tulisan aneh di atasnya...</p>
+        <img src="https://via.placeholder.com/300x200/8B4513/FFFFFF?text=Peti+Misterius" alt="Peti Misterius">
+    </div>
+
+    <div id="halaman3" class="content">
+        <h3>Peti Kosong</h3>
+        <p>Sayang sekali, peti ini kosong! Mungkin harta karun sudah diambil orang lain.</p>
+        <img src="https://via.placeholder.com/300x200/555555/FFFFFF?text=Peti+Kosong" alt="Peti Kosong">
+    </div>
+
+    <script>
+        function cekKode() {
+            let kodeInput = document.getElementById("kode").value;
+            let pesan = document.getElementById("message");
+
+            // Sembunyikan semua konten dulu
+            document.getElementById("halaman1").style.display = "none";
+            document.getElementById("halaman2").style.display = "none";
+            document.getElementById("halaman3").style.display = "none";
+
+            // Cek kode dan tampilkan konten yang sesuai
+            if (kodeInput === "1234") {
+                pesan.innerHTML = "Peti terbuka!";
+                pesan.style.color = "#2ecc71";
+                document.getElementById("halaman1").style.display = "block";
+            } else if (kodeInput === "5678") {
+                pesan.innerHTML = "Peti terbuka!";
+                pesan.style.color = "#2ecc71";
+                document.getElementById("halaman2").style.display = "block";
+            } else if (kodeInput === "9012") {
+                pesan.innerHTML = "Peti terbuka!";
+                pesan.style.color = "#2ecc71";
+                document.getElementById("halaman3").style.display = "block";
+            } else {
+                pesan.innerHTML = "Kode salah! Coba lagi.";
+                pesan.style.color = "#e74c3c";
+            }
+        }
+    </script>
+
+</body>
+</html>
